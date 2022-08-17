@@ -1,0 +1,800 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="artlingModel1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="artlingModel1StoreContainer">
+    <EntitySet Name="Artists" EntityType="artlingModel1.Store.Artists" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Carts" EntityType="artlingModel1.Store.Carts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Categories" EntityType="artlingModel1.Store.Categories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Favourites" EntityType="artlingModel1.Store.Favourites" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrderDetails" EntityType="artlingModel1.Store.OrderDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orders" EntityType="artlingModel1.Store.Orders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Payments" EntityType="artlingModel1.Store.Payments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Products" EntityType="artlingModel1.Store.Products" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ShippingDetails" EntityType="artlingModel1.Store.ShippingDetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="artlingModel1.Store.Users" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ProductCategory" Association="artlingModel1.Store.ProductCategory">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Category" EntitySet="Categories" />
+    </AssociationSet>
+    <AssociationSet Name="ArtistProduct" Association="artlingModel1.Store.ArtistProduct">
+      <End Role="Artist" EntitySet="Artists" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="UserArtist" Association="artlingModel1.Store.UserArtist">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Artist" EntitySet="Artists" />
+    </AssociationSet>
+    <AssociationSet Name="UserFavourite" Association="artlingModel1.Store.UserFavourite">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Favourite" EntitySet="Favourites" />
+    </AssociationSet>
+    <AssociationSet Name="UserCart" Association="artlingModel1.Store.UserCart">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Cart" EntitySet="Carts" />
+    </AssociationSet>
+    <AssociationSet Name="UserOrder" Association="artlingModel1.Store.UserOrder">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="OrderOrderDetail" Association="artlingModel1.Store.OrderOrderDetail">
+      <End EntitySet="Orders" Role="Order" />
+      <End EntitySet="OrderDetails" Role="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="OrderDetailProduct" Association="artlingModel1.Store.OrderDetailProduct">
+      <End EntitySet="OrderDetails" Role="OrderDetail" />
+      <End EntitySet="Products" Role="Product" />
+    </AssociationSet>
+    <AssociationSet Name="OrderShippingDetail" Association="artlingModel1.Store.OrderShippingDetail">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="ShippingDetail" EntitySet="ShippingDetails" />
+    </AssociationSet>
+    <AssociationSet Name="OrderPayment" Association="artlingModel1.Store.OrderPayment">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FavouriteProduct" Association="artlingModel1.Store.FavouriteProduct">
+      <End Role="Favourite" EntitySet="Favourites" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Artists">
+    <Key>
+      <PropertyRef Name="ArtistId" />
+    </Key>
+    <Property Name="ArtistId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArtistName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="ArtistProfile" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="ArtistHometown" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UserId" Type="int" Nullable="true" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Carts">
+    <Key>
+      <PropertyRef Name="CartId" />
+    </Key>
+    <Property Name="CartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="true" />
+    <Property Name="UserId" Type="nvarchar" Nullable="true" MaxLength="12" />
+    <Property Name="Quantity" Type="smallint" Nullable="true" />
+    <Property Name="OrderId" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="TPrice" Type="decimal" Nullable="true" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="ProductCategory" Type="nvarchar" Nullable="true" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Favourites">
+    <Key>
+      <PropertyRef Name="FId" />
+    </Key>
+    <Property Name="FId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="nvarchar" Nullable="true" MaxLength="12" />
+    <Property Name="ProductId" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="OrderDetails">
+    <Key>
+      <PropertyRef Name="OrderDetailsId" />
+    </Key>
+    <Property Name="OrderDetailsId" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+    <Property Name="ProductId" Nullable="true" Type="int" />
+    <Property Name="Quantity" Nullable="true" Type="int" />
+    <Property Name="OrderId" Nullable="true" Type="int" />
+    <Property Name="OrderOrderId" Nullable="false" Type="int" />
+    <Property Name="Product_ProductId" Nullable="false" Type="int" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" Nullable="true" />
+    <Property Name="GrandTotal" Type="decimal" Nullable="true" Precision="19" Scale="4" />
+    <Property Name="ShippingFee" Type="decimal" Nullable="true" Precision="19" Scale="4" />
+    <Property Name="GrossTotal" Type="decimal" Nullable="true" Precision="19" Scale="4" />
+    <Property Name="UserId" Type="nvarchar" Nullable="true" MaxLength="12" />
+    <Property Name="UserId1" Type="int" Nullable="false" />
+    <Property Name="ShippingDetail_ShippingDetailsId" Type="int" Nullable="false" />
+    <Property Name="Payment_BillId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Payments">
+    <Key>
+      <PropertyRef Name="BillId" />
+    </Key>
+    <Property Name="BillId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BillDateTime" Type="datetime" Nullable="true" />
+    <Property Name="CardNo" Type="int" Nullable="true" />
+    <Property Name="CardExpiryDate" Type="datetime" Nullable="true" />
+    <Property Name="CardCVV" Type="int" Nullable="true" />
+    <Property Name="OrderId" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="ProductDescription" Type="nvarchar" Nullable="true" MaxLength="500" />
+    <Property Name="ProductImage" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="FinishedYear" Type="datetime" Nullable="true" />
+    <Property Name="ProductLength" Type="int" Nullable="true" />
+    <Property Name="ProductWidth" Type="int" Nullable="true" />
+    <Property Name="CategoryId" Type="int" Nullable="true" />
+    <Property Name="ArtistId" Type="int" Nullable="true" />
+    <Property Name="UnitPrice" Type="decimal" Nullable="true" Precision="19" Scale="4" />
+    <Property Name="Quantity" Type="int" Nullable="true" />
+    <Property Name="Status" Type="nvarchar" Nullable="true" MaxLength="1" />
+    <Property Name="ArtistArtistId" Type="int" Nullable="false" />
+    <Property Name="FavouriteFId" Type="int" Nullable="false" />
+    <Property Name="Category_CategoryId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ShippingDetails">
+    <Key>
+      <PropertyRef Name="ShippingDetailsId" />
+    </Key>
+    <Property Name="ShippingDetailsId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Street" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="City" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="State" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Country" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Poscode" Type="int" Nullable="true" />
+    <Property Name="PhoneNumber" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UserId" Type="nvarchar" Nullable="true" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="password" Type="nvarchar" Nullable="true" MaxLength="32" />
+    <Property Name="userId" Type="nvarchar" Nullable="true" MaxLength="12" />
+    <Property Name="signupDate" Type="datetime" Nullable="true" />
+    <Property Name="accType" Type="nvarchar" Nullable="true" MaxLength="1" />
+    <Property Name="status" Type="nvarchar" Nullable="true" MaxLength="1" />
+    <Property Name="Favourite_FId" Type="int" Nullable="false" />
+    <Property Name="Cart_CartId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ProductCategory">
+    <End Role="Product" Type="artlingModel1.Store.Products" Multiplicity="*" />
+    <End Role="Category" Type="artlingModel1.Store.Categories" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="Category_CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ArtistProduct">
+    <End Role="Artist" Type="artlingModel1.Store.Artists" Multiplicity="1" />
+    <End Role="Product" Type="artlingModel1.Store.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Artist">
+        <PropertyRef Name="ArtistId" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ArtistArtistId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserArtist">
+    <End Role="User" Type="artlingModel1.Store.Users" Multiplicity="1" />
+    <End Role="Artist" Type="artlingModel1.Store.Artists" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Artist">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserFavourite">
+    <End Role="User" Type="artlingModel1.Store.Users" Multiplicity="*" />
+    <End Role="Favourite" Type="artlingModel1.Store.Favourites" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Favourite">
+        <PropertyRef Name="FId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Favourite_FId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserCart">
+    <End Role="User" Type="artlingModel1.Store.Users" Multiplicity="*" />
+    <End Role="Cart" Type="artlingModel1.Store.Carts" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Cart">
+        <PropertyRef Name="CartId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Cart_CartId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserOrder">
+    <End Role="User" Type="artlingModel1.Store.Users" Multiplicity="1" />
+    <End Role="Order" Type="artlingModel1.Store.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="UserId1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderOrderDetail">
+    <End Type="artlingModel1.Store.Orders" Multiplicity="1" Role="Order" />
+    <End Type="artlingModel1.Store.OrderDetails" Multiplicity="*" Role="OrderDetail" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="OrderOrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderDetailProduct">
+    <End Type="artlingModel1.Store.OrderDetails" Multiplicity="*" Role="OrderDetail" />
+    <End Type="artlingModel1.Store.Products" Multiplicity="1" Role="Product" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="Product_ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderShippingDetail">
+    <End Role="Order" Type="artlingModel1.Store.Orders" Multiplicity="*" />
+    <End Role="ShippingDetail" Type="artlingModel1.Store.ShippingDetails" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ShippingDetail">
+        <PropertyRef Name="ShippingDetailsId" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="ShippingDetail_ShippingDetailsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderPayment">
+    <End Role="Order" Type="artlingModel1.Store.Orders" Multiplicity="*" />
+    <End Role="Payment" Type="artlingModel1.Store.Payments" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Payment">
+        <PropertyRef Name="BillId" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Payment_BillId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FavouriteProduct">
+    <End Role="Favourite" Type="artlingModel1.Store.Favourites" Multiplicity="1" />
+    <End Role="Product" Type="artlingModel1.Store.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Favourite">
+        <PropertyRef Name="FId" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="FavouriteFId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="artlingModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Artist">
+          <Key>
+            <PropertyRef Name="ArtistId" />
+          </Key>
+          <Property Name="ArtistId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArtistName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArtistProfile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArtistHometown" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="Products" Relationship="artlingModel1.ArtistProduct" FromRole="Artist" ToRole="Product" />
+          <NavigationProperty Name="User" Relationship="artlingModel1.UserArtist" FromRole="Artist" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="CartId" />
+          </Key>
+          <Property Name="CartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="UserId" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Int16" />
+          <Property Name="OrderId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TPrice" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="User" Relationship="artlingModel1.UserCart" FromRole="Cart" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="artlingModel1.ProductCategory" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Favourite">
+          <Key>
+            <PropertyRef Name="FId" />
+          </Key>
+          <Property Name="FId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="ProductId" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="artlingModel1.UserFavourite" FromRole="Favourite" ToRole="User" />
+          <NavigationProperty Name="Products" Relationship="artlingModel1.FavouriteProduct" FromRole="Favourite" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="OrderDetailsId" />
+          </Key>
+          <Property Name="OrderDetailsId" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="OrderId" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="artlingModel1.OrderOrderDetail" FromRole="OrderDetail" ToRole="Order" />
+          <Property Name="OrderOrderId" Nullable="false" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="artlingModel1.OrderDetailProduct" FromRole="OrderDetail" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <Property Name="GrandTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ShippingFee" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="GrossTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="UserId" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="artlingModel1.UserOrder" FromRole="Order" ToRole="User" />
+          <Property Name="UserId1" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OrderDetails" Relationship="artlingModel1.OrderOrderDetail" FromRole="Order" ToRole="OrderDetail" />
+          <NavigationProperty Name="ShippingDetail" Relationship="artlingModel1.OrderShippingDetail" FromRole="Order" ToRole="ShippingDetail" />
+          <NavigationProperty Name="Payment" Relationship="artlingModel1.OrderPayment" FromRole="Order" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="BillId" />
+          </Key>
+          <Property Name="BillId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BillDateTime" Type="DateTime" Precision="3" />
+          <Property Name="CardNo" Type="Int32" />
+          <Property Name="CardExpiryDate" Type="DateTime" Precision="0" />
+          <Property Name="CardCVV" Type="Int32" />
+          <Property Name="OrderId" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="artlingModel1.OrderPayment" FromRole="Payment" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ProductImage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FinishedYear" Type="DateTime" Precision="0" />
+          <Property Name="ProductLength" Type="Int32" />
+          <Property Name="ProductWidth" Type="Int32" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="ArtistId" Type="Int32" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Category" Relationship="artlingModel1.ProductCategory" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Artist" Relationship="artlingModel1.ArtistProduct" FromRole="Product" ToRole="Artist" />
+          <Property Name="ArtistArtistId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OrderDetail" Relationship="artlingModel1.OrderDetailProduct" FromRole="Product" ToRole="OrderDetail" />
+          <NavigationProperty Name="Favourite" Relationship="artlingModel1.FavouriteProduct" FromRole="Product" ToRole="Favourite" />
+          <Property Name="FavouriteFId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShippingDetail">
+          <Key>
+            <PropertyRef Name="ShippingDetailsId" />
+          </Key>
+          <Property Name="ShippingDetailsId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Street" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Poscode" Type="Int32" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="artlingModel1.OrderShippingDetail" FromRole="ShippingDetail" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="userId" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="signupDate" Type="DateTime" Precision="0" />
+          <Property Name="accType" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Artist" Relationship="artlingModel1.UserArtist" FromRole="User" ToRole="Artist" />
+          <NavigationProperty Name="Favourite" Relationship="artlingModel1.UserFavourite" FromRole="User" ToRole="Favourite" />
+          <NavigationProperty Name="Cart" Relationship="artlingModel1.UserCart" FromRole="User" ToRole="Cart" />
+          <NavigationProperty Name="Orders" Relationship="artlingModel1.UserOrder" FromRole="User" ToRole="Order" />
+        </EntityType>
+        <EntityContainer Name="artlingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Artists" EntityType="Self.Artist" />
+          <EntitySet Name="Carts" EntityType="Self.Cart" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Favourites" EntityType="Self.Favourite" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="ShippingDetails" EntityType="Self.ShippingDetail" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="ProductCategory" Association="artlingModel1.ProductCategory">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Category" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="ArtistProduct" Association="artlingModel1.ArtistProduct">
+            <End Role="Artist" EntitySet="Artists" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="UserArtist" Association="artlingModel1.UserArtist">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Artist" EntitySet="Artists" />
+          </AssociationSet>
+          <AssociationSet Name="UserFavourite" Association="artlingModel1.UserFavourite">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Favourite" EntitySet="Favourites" />
+          </AssociationSet>
+          <AssociationSet Name="UserCart" Association="artlingModel1.UserCart">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="UserOrder" Association="artlingModel1.UserOrder">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="OrderOrderDetail" Association="artlingModel1.OrderOrderDetail">
+            <End EntitySet="Orders" Role="Order" />
+            <End EntitySet="OrderDetails" Role="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="OrderDetailProduct" Association="artlingModel1.OrderDetailProduct">
+            <End EntitySet="OrderDetails" Role="OrderDetail" />
+            <End EntitySet="Products" Role="Product" />
+          </AssociationSet>
+          <AssociationSet Name="OrderShippingDetail" Association="artlingModel1.OrderShippingDetail">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="ShippingDetail" EntitySet="ShippingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="OrderPayment" Association="artlingModel1.OrderPayment">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FavouriteProduct" Association="artlingModel1.FavouriteProduct">
+            <End Role="Favourite" EntitySet="Favourites" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="ProductCategory">
+          <End Type="artlingModel1.Product" Role="Product" Multiplicity="*" />
+          <End Type="artlingModel1.Category" Role="Category" Multiplicity="1" />
+        </Association>
+        <Association Name="ArtistProduct">
+          <End Type="artlingModel1.Artist" Role="Artist" Multiplicity="1" />
+          <End Type="artlingModel1.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artist">
+              <PropertyRef Name="ArtistId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ArtistArtistId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserArtist">
+          <End Type="artlingModel1.User" Role="User" Multiplicity="1" />
+          <End Type="artlingModel1.Artist" Role="Artist" Multiplicity="0..1" />
+        </Association>
+        <Association Name="UserFavourite">
+          <End Type="artlingModel1.User" Role="User" Multiplicity="1" />
+          <End Type="artlingModel1.Favourite" Role="Favourite" Multiplicity="1" />
+        </Association>
+        <Association Name="UserCart">
+          <End Type="artlingModel1.User" Role="User" Multiplicity="1" />
+          <End Type="artlingModel1.Cart" Role="Cart" Multiplicity="1" />
+        </Association>
+        <Association Name="UserOrder">
+          <End Type="artlingModel1.User" Role="User" Multiplicity="1" />
+          <End Type="artlingModel1.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="UserId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OrderOrderDetail">
+          <End Type="artlingModel1.Order" Multiplicity="1" Role="Order" />
+          <End Type="artlingModel1.OrderDetail" Multiplicity="*" Role="OrderDetail" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="OrderOrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OrderDetailProduct">
+          <End Type="artlingModel1.OrderDetail" Multiplicity="1" Role="OrderDetail" />
+          <End Type="artlingModel1.Product" Multiplicity="1" Role="Product" />
+        </Association>
+        <Association Name="OrderShippingDetail">
+          <End Type="artlingModel1.Order" Role="Order" Multiplicity="1" />
+          <End Type="artlingModel1.ShippingDetail" Role="ShippingDetail" Multiplicity="1" />
+        </Association>
+        <Association Name="OrderPayment">
+          <End Type="artlingModel1.Order" Role="Order" Multiplicity="1" />
+          <End Type="artlingModel1.Payment" Role="Payment" Multiplicity="1" />
+        </Association>
+        <Association Name="FavouriteProduct">
+          <End Type="artlingModel1.Favourite" Role="Favourite" Multiplicity="1" />
+          <End Type="artlingModel1.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Favourite">
+              <PropertyRef Name="FId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="FavouriteFId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="artlingModel1StoreContainer" CdmEntityContainer="artlingEntities">
+    <EntitySetMapping Name="Artists">
+      <EntityTypeMapping TypeName="IsTypeOf(artlingModel1.Artist)">
+        <MappingFragment StoreEntitySet="Artists">
+          <ScalarProperty Name="ArtistId" ColumnName="ArtistId" />
+          <ScalarProperty Name="ArtistName" ColumnName="ArtistName" />
+          <ScalarProperty Name="ArtistProfile" ColumnName="ArtistProfile" />
+          <ScalarProperty Name="ArtistHometown" ColumnName="ArtistHometown" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carts">
+      <EntityTypeMapping TypeName="IsTypeOf(artlingModel1.Cart)">
+        <MappingFragment StoreEntitySet="Carts">
+          <ScalarProperty Name="CartId" ColumnName="CartId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="TPrice" ColumnName="TPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="IsTypeOf(artlingModel1.Category)">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="ProductCategory" ColumnName="ProductCategory" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Favourites">
+      <EntityTypeMapping TypeName="IsTypeOf(artlingModel1.Favourite)">
+        <MappingFragment StoreEntitySet="Favourites">
+          <ScalarProperty Name="FId" ColumnName="FId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="IsTypeOf(artlingModel1.OrderDetail)">
+        <MappingFragment StoreEntitySet="OrderDetails">
+          <ScalarProperty Name="OrderDetailsId" ColumnName="OrderDetailsId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="OrderOrderId" ColumnName="OrderOrderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="IsTypeOf(artlingModel1.Order)">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+          <ScalarProperty Name="ShippingFee" ColumnName="ShippingFee" />
+          <ScalarProperty Name="GrossTotal" ColumnName="GrossTotal" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserId1" ColumnName="UserId1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="IsTypeOf(artlingModel1.Payment)">
+        <MappingFragment StoreEntitySet="Payments">
+          <ScalarProperty Name="BillId" ColumnName="BillId" />
+          <ScalarProperty Name="BillDateTime" ColumnName="BillDateTime" />
+          <ScalarProperty Name="CardNo" ColumnName="CardNo" />
+          <ScalarProperty Name="CardExpiryDate" ColumnName="CardExpiryDate" />
+          <ScalarProperty Name="CardCVV" ColumnName="CardCVV" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="IsTypeOf(artlingModel1.Product)">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+          <ScalarProperty Name="FinishedYear" ColumnName="FinishedYear" />
+          <ScalarProperty Name="ProductLength" ColumnName="ProductLength" />
+          <ScalarProperty Name="ProductWidth" ColumnName="ProductWidth" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="ArtistId" ColumnName="ArtistId" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ArtistArtistId" ColumnName="ArtistArtistId" />
+          <ScalarProperty Name="FavouriteFId" ColumnName="FavouriteFId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShippingDetails">
+      <EntityTypeMapping TypeName="IsTypeOf(artlingModel1.ShippingDetail)">
+        <MappingFragment StoreEntitySet="ShippingDetails">
+          <ScalarProperty Name="ShippingDetailsId" ColumnName="ShippingDetailsId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Poscode" ColumnName="Poscode" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(artlingModel1.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="signupDate" ColumnName="signupDate" />
+          <ScalarProperty Name="accType" ColumnName="accType" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ProductCategory" TypeName="artlingModel1.ProductCategory" StoreEntitySet="Products">
+      <EndProperty Name="Category">
+        <ScalarProperty Name="CategoryId" ColumnName="Category_CategoryId" />
+      </EndProperty>
+      <EndProperty Name="Product">
+        <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserArtist" TypeName="artlingModel1.UserArtist" StoreEntitySet="Artists">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="Artist">
+        <ScalarProperty Name="ArtistId" ColumnName="ArtistId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserFavourite" TypeName="artlingModel1.UserFavourite" StoreEntitySet="Users">
+      <EndProperty Name="Favourite">
+        <ScalarProperty Name="FId" ColumnName="Favourite_FId" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserCart" TypeName="artlingModel1.UserCart" StoreEntitySet="Users">
+      <EndProperty Name="Cart">
+        <ScalarProperty Name="CartId" ColumnName="Cart_CartId" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="OrderDetailProduct" TypeName="artlingModel1.OrderDetailProduct" StoreEntitySet="OrderDetails">
+      <EndProperty Name="Product">
+        <ScalarProperty Name="ProductId" ColumnName="Product_ProductId" />
+      </EndProperty>
+      <EndProperty Name="OrderDetail">
+        <ScalarProperty Name="OrderDetailsId" ColumnName="OrderDetailsId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="OrderShippingDetail" TypeName="artlingModel1.OrderShippingDetail" StoreEntitySet="Orders">
+      <EndProperty Name="ShippingDetail">
+        <ScalarProperty Name="ShippingDetailsId" ColumnName="ShippingDetail_ShippingDetailsId" />
+      </EndProperty>
+      <EndProperty Name="Order">
+        <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="OrderPayment" TypeName="artlingModel1.OrderPayment" StoreEntitySet="Orders">
+      <EndProperty Name="Payment">
+        <ScalarProperty Name="BillId" ColumnName="Payment_BillId" />
+      </EndProperty>
+      <EndProperty Name="Order">
+        <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

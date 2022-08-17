@@ -1,0 +1,696 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit.3.13.1\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.13.1\build\NUnit.props')" />
+  <Import Project="..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.3\build\Microsoft.CodeAnalysis.NetAnalyzers.props" Condition="Exists('..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.3\build\Microsoft.CodeAnalysis.NetAnalyzers.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{089211AF-35B0-4D3C-B1FD-E5B8A5FAFAAB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TheArtling</RootNamespace>
+    <AssemblyName>TheArtling</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44369</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="nunit.framework, Version=3.13.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.13.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Barcode, Version=5.1.4.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.6.3.3\lib\net40\Spire.Barcode.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.DataExport, Version=4.1.9.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.6.3.3\lib\net40\Spire.DataExport.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.DataExport.ResourceMgr, Version=2.1.0.0, Culture=neutral, PublicKeyToken=4bc1500157862925, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.6.3.3\lib\net40\Spire.DataExport.ResourceMgr.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Doc, Version=9.3.3.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.6.3.3\lib\net40\Spire.Doc.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.DocViewer.Forms, Version=6.1.0.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.6.3.3\lib\net40\Spire.DocViewer.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Email, Version=4.1.2.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.6.3.3\lib\net40\Spire.Email.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.License, Version=1.3.8.40, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.6.3.3\lib\net40\Spire.License.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.OfficeViewer.Forms, Version=6.3.3.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.6.3.3\lib\net40\Spire.OfficeViewer.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Pdf, Version=7.3.1.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.6.3.3\lib\net40\Spire.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.PdfViewer.Asp, Version=6.1.1.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.6.3.3\lib\net40\Spire.PdfViewer.Asp.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.PdfViewer.Forms, Version=6.1.1.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.6.3.3\lib\net40\Spire.PdfViewer.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Presentation, Version=6.2.2.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.6.3.3\lib\net40\Spire.Presentation.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Spreadsheet, Version=5.3.0.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.6.3.3\lib\net40\Spire.Spreadsheet.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.XLS, Version=11.3.4.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.6.3.3\lib\net40\Spire.XLS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Compression.Base, Version=18.4460.0.49, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Compression.Base.18.4.0.49\lib\net46\Syncfusion.Compression.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Licensing, Version=18.4460.0.49, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Licensing.18.4.0.49\lib\net46\Syncfusion.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Base, Version=18.4460.0.49, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Pdf.AspNet.18.4.0.49\lib\net46\Syncfusion.Pdf.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebDriver, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AboutUs.aspx" />
+    <Content Include="Account.aspx" />
+    <Content Include="AddArtwork.aspx" />
+    <Content Include="App_Data\artling.mdf" />
+    <Content Include="App_Data\artling_log.ldf">
+      <DependentUpon>artling.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\TheArtlingDatabase.mdf" />
+    <Content Include="App_Data\TheArtlingDatabase_log.ldf">
+      <DependentUpon>TheArtlingDatabase.mdf</DependentUpon>
+    </Content>
+    <Content Include="ArtistAccount.aspx" />
+    <Content Include="ArtistProfile.aspx" />
+    <Content Include="Artpage.aspx" />
+    <Content Include="Cart.aspx" />
+    <Content Include="Collectionspage.aspx" />
+    <Content Include="ContactUs.aspx" />
+    <Content Include="DrawingPage.aspx" />
+    <Content Include="EditProduct.aspx" />
+    <Content Include="Favourite.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Homepage.aspx" />
+    <Content Include="ImagesAndIcons\Icons\account.svg" />
+    <Content Include="ImagesAndIcons\Icons\arrow-down.svg" />
+    <Content Include="ImagesAndIcons\Icons\bin.svg" />
+    <Content Include="ImagesAndIcons\Icons\cart.svg" />
+    <Content Include="ImagesAndIcons\Icons\clipboard.svg" />
+    <Content Include="ImagesAndIcons\Icons\close.svg" />
+    <Content Include="ImagesAndIcons\Icons\credit-card.svg" />
+    <Content Include="ImagesAndIcons\Icons\draw.svg" />
+    <Content Include="ImagesAndIcons\Icons\email.svg" />
+    <Content Include="ImagesAndIcons\Icons\facebook_icon.svg" />
+    <Content Include="ImagesAndIcons\Icons\favorite.svg" />
+    <Content Include="ImagesAndIcons\Icons\favourite.svg" />
+    <Content Include="ImagesAndIcons\Icons\left-arrow.svg" />
+    <Content Include="ImagesAndIcons\Icons\login.svg" />
+    <Content Include="ImagesAndIcons\Icons\right-arrow.svg" />
+    <Content Include="ImagesAndIcons\Icons\save.svg" />
+    <Content Include="ImagesAndIcons\Icons\edit.svg" />
+    <Content Include="ImagesAndIcons\Icons\floppy-disk.svg" />
+    <Content Include="ImagesAndIcons\Icons\guarantee.svg" />
+    <Content Include="ImagesAndIcons\Icons\heart.svg" />
+    <Content Include="ImagesAndIcons\Icons\history.svg" />
+    <Content Include="ImagesAndIcons\Icons\id.svg" />
+    <Content Include="ImagesAndIcons\Icons\image_icon.svg" />
+    <Content Include="ImagesAndIcons\Icons\instagram_icon.svg" />
+    <Content Include="ImagesAndIcons\Icons\logout.svg" />
+    <Content Include="ImagesAndIcons\Icons\mastercard.svg" />
+    <Content Include="ImagesAndIcons\Icons\cancel.svg" />
+    <Content Include="ImagesAndIcons\Icons\name.svg" />
+    <Content Include="ImagesAndIcons\Icons\order.svg" />
+    <Content Include="ImagesAndIcons\Icons\padlock.svg" />
+    <Content Include="ImagesAndIcons\Icons\password.svg" />
+    <Content Include="ImagesAndIcons\Icons\pencil.svg" />
+    <Content Include="ImagesAndIcons\Icons\refresh-button.svg" />
+    <Content Include="ImagesAndIcons\Icons\scrollUp.svg" />
+    <Content Include="ImagesAndIcons\Icons\search_icon.svg" />
+    <Content Include="ImagesAndIcons\Icons\stock.svg" />
+    <Content Include="ImagesAndIcons\Icons\trash.svg" />
+    <Content Include="ImagesAndIcons\Icons\truck.svg" />
+    <Content Include="ImagesAndIcons\Icons\twitter_icon.svg" />
+    <Content Include="ImagesAndIcons\Icons\visa.svg" />
+    <Content Include="ImagesAndIcons\Images\206e9571f13758ec6b3a96031c08e2f3.jpg" />
+    <Content Include="ImagesAndIcons\Images\AboutUsImg\AboutUs.png" />
+    <Content Include="ImagesAndIcons\Images\AboutUsImg\ArtConsultancy.png" />
+    <Content Include="ImagesAndIcons\Images\AboutUsImg\BrowseArt.png" />
+    <Content Include="ImagesAndIcons\Images\AboutUsImg\BrowseDesign.png" />
+    <Content Include="ImagesAndIcons\Images\AboutUsImg\ListWIthUs.png" />
+    <Content Include="ImagesAndIcons\Images\AmusingBlushingIrishwaterspaniel-size_restricted.gif" />
+    <Content Include="ImagesAndIcons\Images\bg.gif" />
+    <Content Include="ImagesAndIcons\Images\brush.jpg" />
+    <Content Include="ImagesAndIcons\Images\c3ea2644d7ebaec9f7da197a61ea11db.gif" />
+    <Content Include="ImagesAndIcons\Images\carousel_image1.jpg" />
+    <Content Include="ImagesAndIcons\Images\carousel_image2.jpg" />
+    <Content Include="ImagesAndIcons\Images\carousel_image3.jpg" />
+    <Content Include="ImagesAndIcons\Images\chesser-800x561.jpg" />
+    <Content Include="ImagesAndIcons\Images\ContactUsImg\ContactUs.jpg" />
+    <Content Include="ImagesAndIcons\Images\evearnold.jpg" />
+    <Content Include="ImagesAndIcons\Images\james-doyle-2-1.gif" />
+    <Content Include="ImagesAndIcons\Images\original.gif" />
+    <Content Include="ImagesAndIcons\Images\pexels-photo-1084510.jpeg" />
+    <Content Include="ImagesAndIcons\Images\photo-1579547944082-fac44e416258.jfif" />
+    <Content Include="ImagesAndIcons\Images\purple-608575_1280.jpg" />
+    <Content Include="ImagesAndIcons\Images\romerobritto.jpg" />
+    <Content Include="ImagesAndIcons\Images\source.gif" />
+    <Content Include="ImagesAndIcons\Images\submit.jpg" />
+    <Content Include="ImagesAndIcons\Images\TheTeam\Ivy.jpg" />
+    <Content Include="ImagesAndIcons\Images\TheTeam\Jennievieve.jpg" />
+    <Content Include="ImagesAndIcons\Images\TheTeam\jesmine.jpg" />
+    <Content Include="ImagesAndIcons\Images\TheTeam\Kim.jpg" />
+    <Content Include="ImagesAndIcons\Images\TheTeam\Madi.jpg" />
+    <Content Include="ImagesAndIcons\Images\TheTeam\Martin.jpg" />
+    <Content Include="ImagesAndIcons\Images\TheTeam\Poh.jpg" />
+    <Content Include="ImagesAndIcons\Images\TheTeam\sulayan.jpg" />
+    <Content Include="ImagesAndIcons\Images\TheTeam\Talenia.jpg" />
+    <Content Include="ImagesAndIcons\Images\TheTeam\Terry.jpg" />
+    <Content Include="ImagesAndIcons\Images\TheTeam\Tim.jpg" />
+    <Content Include="ImagesAndIcons\Images\wp2672841.jpg" />
+    <Content Include="Layout\common.css" />
+    <Content Include="Layout\gridview.css" />
+    <Content Include="Layout\layout.css" />
+    <Content Include="Layout\sellerGuide.css" />
+    <Content Include="Layout\shop_layout.css" />
+    <Content Include="Layout\submitArt.css" />
+    <Content Include="Layout\table.css" />
+    <Content Include="Login.aspx" />
+    <Content Include="ManageStock.aspx" />
+    <Content Include="Model\Artling.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Artling.edmx</DependentUpon>
+      <LastGenOutput>Artling.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\Artling.edmx.sql" />
+    <Content Include="Model\Artling.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Artling.edmx</DependentUpon>
+      <LastGenOutput>Artling.cs</LastGenOutput>
+    </Content>
+    <Content Include="MyArt.aspx" />
+    <Content Include="OrderDetails.aspx" />
+    <Content Include="OrderProduct.aspx" />
+    <Content Include="PaintingPage.aspx" />
+    <Content Include="Payment.aspx" />
+    <Content Include="PhotographyPage.aspx" />
+    <Content Include="PrivacyPolicyPage.aspx" />
+    <Content Include="ProductCart.aspx" />
+    <Content Include="ProductImage\2047.jpg" />
+    <Content Include="ProductImage\design.jpg" />
+    <Content Include="ProductImage\girl.jpg" />
+    <Content Include="ProductImage\image_2632.jpeg" />
+    <Content Include="ProductImage\lotus.jpeg" />
+    <Content Include="ProductImage\memory.jpeg" />
+    <Content Include="ProductImage\sakura.jpg" />
+    <Content Include="ProductImage\test_image.jpeg" />
+    <Content Include="PurchaseHistory.aspx" />
+    <Content Include="receipt.aspx" />
+    <Content Include="Register.aspx" />
+    <Content Include="Resetpassword.aspx" />
+    <Content Include="ReturnPolicyPage.aspx" />
+    <Content Include="SellerGuide.aspx" />
+    <Content Include="Send Email\SendEmail.aspx" />
+    <Content Include="Shipping.aspx" />
+    <Content Include="SubmitArt.aspx" />
+    <Content Include="TermsOfUsePage.aspx" />
+    <Content Include="TheTeam.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutUs.aspx.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AboutUs.aspx.designer.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account.aspx.cs">
+      <DependentUpon>Account.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account.aspx.designer.cs">
+      <DependentUpon>Account.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddArtwork.aspx.cs">
+      <DependentUpon>AddArtwork.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddArtwork.aspx.designer.cs">
+      <DependentUpon>AddArtwork.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="ArtistAccount.aspx.cs">
+      <DependentUpon>ArtistAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ArtistAccount.aspx.designer.cs">
+      <DependentUpon>ArtistAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ArtistProfile.aspx.cs">
+      <DependentUpon>ArtistProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ArtistProfile.aspx.designer.cs">
+      <DependentUpon>ArtistProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Artpage.aspx.cs">
+      <DependentUpon>Artpage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Artpage.aspx.designer.cs">
+      <DependentUpon>Artpage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cart.aspx.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cart.aspx.designer.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Collectionspage.aspx.cs">
+      <DependentUpon>Collectionspage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Collectionspage.aspx.designer.cs">
+      <DependentUpon>Collectionspage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContactUs.aspx.cs">
+      <DependentUpon>ContactUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContactUs.aspx.designer.cs">
+      <DependentUpon>ContactUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DrawingPage.aspx.cs">
+      <DependentUpon>DrawingPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DrawingPage.aspx.designer.cs">
+      <DependentUpon>DrawingPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditProduct.aspx.cs">
+      <DependentUpon>EditProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditProduct.aspx.designer.cs">
+      <DependentUpon>EditProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Favourite.aspx.cs">
+      <DependentUpon>Favourite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Favourite.aspx.designer.cs">
+      <DependentUpon>Favourite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HeadAndFooter.Master.cs">
+      <DependentUpon>HeadAndFooter.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HeadAndFooter.Master.designer.cs">
+      <DependentUpon>HeadAndFooter.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Homepage.aspx.cs">
+      <DependentUpon>Homepage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Homepage.aspx.designer.cs">
+      <DependentUpon>Homepage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginTest.cs" />
+    <Compile Include="ManageStock.aspx.cs">
+      <DependentUpon>ManageStock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageStock.aspx.designer.cs">
+      <DependentUpon>ManageStock.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Artist.cs">
+      <DependentUpon>Artling.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Artling.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Artling.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Artling.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Artling.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Artling.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Artling.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Cart.cs">
+      <DependentUpon>Artling.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Category.cs">
+      <DependentUpon>Artling.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Favourite.cs">
+      <DependentUpon>Artling.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Order.cs">
+      <DependentUpon>Artling.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrderDetail.cs">
+      <DependentUpon>Artling.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Payment.cs">
+      <DependentUpon>Artling.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Product.cs">
+      <DependentUpon>Artling.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ShippingDetail.cs">
+      <DependentUpon>Artling.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\User.cs">
+      <DependentUpon>Artling.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MyArt.aspx.cs">
+      <DependentUpon>MyArt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyArt.aspx.designer.cs">
+      <DependentUpon>MyArt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDetails.aspx.cs">
+      <DependentUpon>OrderDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrderDetails.aspx.designer.cs">
+      <DependentUpon>OrderDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OrderProduct.aspx.cs">
+      <DependentUpon>OrderProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrderProduct.aspx.designer.cs">
+      <DependentUpon>OrderProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaintingPage.aspx.cs">
+      <DependentUpon>PaintingPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaintingPage.aspx.designer.cs">
+      <DependentUpon>PaintingPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.aspx.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Payment.aspx.designer.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PhotographyPage.aspx.cs">
+      <DependentUpon>PhotographyPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PhotographyPage.aspx.designer.cs">
+      <DependentUpon>PhotographyPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PrivacyPolicyPage.aspx.cs">
+      <DependentUpon>PrivacyPolicyPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrivacyPolicyPage.aspx.designer.cs">
+      <DependentUpon>PrivacyPolicyPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductCart.aspx.cs">
+      <DependentUpon>ProductCart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductCart.aspx.designer.cs">
+      <DependentUpon>ProductCart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchaseHistory.aspx.cs">
+      <DependentUpon>PurchaseHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PurchaseHistory.aspx.designer.cs">
+      <DependentUpon>PurchaseHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="receipt.aspx.cs">
+      <DependentUpon>receipt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="receipt.aspx.designer.cs">
+      <DependentUpon>receipt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Resetpassword.aspx.cs">
+      <DependentUpon>Resetpassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Resetpassword.aspx.designer.cs">
+      <DependentUpon>Resetpassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReturnPolicyPage.aspx.cs">
+      <DependentUpon>ReturnPolicyPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReturnPolicyPage.aspx.designer.cs">
+      <DependentUpon>ReturnPolicyPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SellerGuide.aspx.cs">
+      <DependentUpon>SellerGuide.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SellerGuide.aspx.designer.cs">
+      <DependentUpon>SellerGuide.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Send Email\SendEmail.aspx.cs">
+      <DependentUpon>SendEmail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Send Email\SendEmail.aspx.designer.cs">
+      <DependentUpon>SendEmail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Shipping.aspx.cs">
+      <DependentUpon>Shipping.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Shipping.aspx.designer.cs">
+      <DependentUpon>Shipping.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubmitArt.aspx.cs">
+      <DependentUpon>SubmitArt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubmitArt.aspx.designer.cs">
+      <DependentUpon>SubmitArt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TermsOfUsePage.aspx.cs">
+      <DependentUpon>TermsOfUsePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TermsOfUsePage.aspx.designer.cs">
+      <DependentUpon>TermsOfUsePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TheTeam.aspx.cs">
+      <DependentUpon>TheTeam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TheTeam.aspx.designer.cs">
+      <DependentUpon>TheTeam.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="HeadAndFooter.Master" />
+    <Content Include="Fonts\Arvo-Bold.ttf" />
+    <Content Include="Fonts\Arvo-Regular.ttf" />
+    <Content Include="Fonts\Lato-Regular.ttf" />
+    <EntityDeploy Include="Model\Artling.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Artling.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model\Artling.edmx.diagram">
+      <DependentUpon>Artling.edmx</DependentUpon>
+    </Content>
+    <None Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="Web.sitemap" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="ImagesAndIcons\Images\ProductImages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.3\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.NetAnalyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.3\analyzers\dotnet\cs\Microsoft.CodeAnalysis.NetAnalyzers.dll" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51524</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44369/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.3\build\Microsoft.CodeAnalysis.NetAnalyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.3\build\Microsoft.CodeAnalysis.NetAnalyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.3\build\Microsoft.CodeAnalysis.NetAnalyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.3\build\Microsoft.CodeAnalysis.NetAnalyzers.targets'))" />
+    <Error Condition="!Exists('..\packages\NUnit.3.13.1\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.13.1\build\NUnit.props'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.3\build\Microsoft.CodeAnalysis.NetAnalyzers.targets" Condition="Exists('..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.3\build\Microsoft.CodeAnalysis.NetAnalyzers.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

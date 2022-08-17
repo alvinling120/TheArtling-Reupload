@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0">
+  <siteMapNode url="~/Homepage.aspx" title="Home"  description="Home Page">
+    <siteMapNode url="~/Artpage.aspx" title="Artworks" description="Art Page"/>
+    <siteMapNode url="~/Cart.aspx" title="Carts" description="Cart Page">
+      <siteMapNode url="~/Shipping.aspx" title="Shipping" description="Shipping Page">
+        <siteMapNode url="~/Payment.aspx" title="Payment" description="Payment Page"/>
+      </siteMapNode>
+    </siteMapNode>
+    <siteMapNode url="~/Favourite.aspx" title="Favourite" description="Favourite Page">
+      <siteMapNode url="~/ProductCart.aspx?4=4" title="Product Detail" description="Product Detail Page" />
+    </siteMapNode>
+    <siteMapNode url="~/PurchaseHistory.aspx" title="Purchase History" description="Purchase History Page">
+      <siteMapNode url="~/OrderDetails.aspx" title="Order Details" description="Order Details Page"/>
+    </siteMapNode>
+    <siteMapNode url="~/Account.aspx" title="Account" description="Account Page"/>
+    <siteMapNode url="~/MyArt.aspx" title="My Gallery" description="My Gallery Page">
+      <siteMapNode url="~/EditProduct.aspx" title="Edit Product" description="Edit Product Page"/>
+      <siteMapNode url="~/ManageStock.aspx" title="Manage Stock" description="Manage Stock Page"/>
+    </siteMapNode>
+    <siteMapNode url="~/PaintingPage.aspx" title="Painting" description="Painting Page">
+      <siteMapNode url="~/ProductCart.aspx" title="Product Detail" description="Product Detail Page"/>
+    </siteMapNode>
+    <siteMapNode url="~/DrawingPage.aspx" title="Drawing" description="Drawing Page">
+      <siteMapNode url="~/ProductCart.aspx?3=3" title="Product Detail" description="Product Detail Page"/>
+    </siteMapNode>
+    <siteMapNode url="~/PhotographyPage.aspx" title="Photography" description="Photography Page">
+      <siteMapNode url="~/ProductCart.aspx?2=2" title="Product Detail" description="Product Detail Page"/>
+    </siteMapNode>
+    <siteMapNode url="~/SellerGuide.aspx" title="Seller Guide" description="Seller Guide Page"/>
+    <siteMapNode url="~/SubmitArt.aspx" title="Submit Art" description="Submit Art Page">
+      <siteMapNode url="~/ArtistAccount.aspx" title="Artist Account" description="Artist Account Page"/>
+    </siteMapNode>
+    
+    <siteMapNode url="~/AboutUs.aspx" title="AboutUs" description="About Us Page" />
+    <siteMapNode url="~/TheTeam.aspx" title="OurTeam" description="Our Team Page"/>
+    <siteMapNode url="~/ContactUs.aspx" title="ContactUs" description="Contact Us Page"/>
+    <siteMapNode url="~/TermsOfUsePage.aspx" title="Terms of Use" description="Terms of Use Page"/>
+    <siteMapNode url="~/ReturnPolicyPage.aspx" title="Return Policy" description="Terms of Use Page"/>
+    <siteMapNode url="~/PrivacyPolicyPage.aspx" title="Privacy Policy" description="Privacy Policy Page"/>
+  </siteMapNode>
+</siteMap>
+

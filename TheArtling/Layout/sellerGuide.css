@@ -1,0 +1,15 @@
+﻿.contentSG {
+    max-width: 60%;
+    text-align: center;
+    margin-left: 20%;
+}
+
+.subContSG{
+    text-align:left;
+    font-size:15px;
+}
+
+.questionSG{
+    font-size:18px;
+    font-family:'MS Gothic'
+}

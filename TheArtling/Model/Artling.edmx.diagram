@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fbaa1b922ea74726b358fde2f4b6f0b2" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="artlingModel1.Artist" Width="1.5" PointX="2.75" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="artlingModel1.Cart" Width="1.5" PointX="2.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="artlingModel1.Category" Width="1.5" PointX="7.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="artlingModel1.Favourite" Width="1.5" PointX="0.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="artlingModel1.OrderDetail" PointX="4.875" PointY="5.75" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="artlingModel1.Order" Width="1.5" PointX="2.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="artlingModel1.Payment" Width="1.5" PointX="6.875" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="artlingModel1.Product" Width="1.5" PointX="5.375" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="artlingModel1.ShippingDetail" Width="1.5" PointX="8" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="artlingModel1.User" Width="1.5" PointX="0.5" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="artlingModel1.ProductCategory" />
+        <AssociationConnector Association="artlingModel1.ArtistProduct" />
+        <AssociationConnector Association="artlingModel1.UserArtist" />
+        <AssociationConnector Association="artlingModel1.UserFavourite" />
+        <AssociationConnector Association="artlingModel1.UserCart" />
+        <AssociationConnector Association="artlingModel1.UserOrder" />
+        <AssociationConnector Association="artlingModel1.OrderOrderDetail" />
+        <AssociationConnector Association="artlingModel1.OrderDetailProduct" />
+        <AssociationConnector Association="artlingModel1.OrderShippingDetail" />
+        <AssociationConnector Association="artlingModel1.OrderPayment" />
+        <AssociationConnector Association="artlingModel1.FavouriteProduct" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

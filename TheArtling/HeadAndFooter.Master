@@ -1,0 +1,307 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="HeadAndFooter.master.cs" Inherits="TheArtling.HeadAndFooter" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link href="Layout/layout.css" rel="stylesheet" type="text/css"/>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 40px;
+            height: 8%;
+        }
+        .auto-style2 {
+            width: 100px;
+            height: 8%;
+        }
+        .auto-style3 {
+            width: 80px;
+            height: 8%;
+        }
+        .auto-style4 {
+            width: 30px;
+            height: 8%;
+        }
+        .auto-style5 {
+            width: 100%;
+        }
+        .header4 {
+        width: 100%;
+        height: 100%;
+        top: 19%;
+        position: absolute;
+        bottom: 0;
+    }
+        .auto-style9 {
+            height: 60px;
+            background-color: #D2D9D5;
+            border-bottom: solid 1px #D2D9D5;
+            border-bottom-color: black;
+            margin-left: 43px
+        }
+
+        .scrolltop {
+            color: black;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+    <form id="form1" runat="server">
+        <header>
+            <div class="header1">
+               
+                <asp:ImageButton 
+                    class="small-icon acc"
+                    ID="ibtnAccount" 
+                    runat="server" 
+                    ImageUrl="~/ImagesAndIcons/Icons/account.svg"
+                    OnClick="AccountImageButton_Click"
+                    PostBackUrl="~/Account.aspx" ToolTip="Account"
+                    />
+                <asp:ImageButton 
+                    class="small-icon fav"
+                    ID="ibtnFav" 
+                    runat="server" 
+                    ImageUrl="~/ImagesAndIcons/Icons/favourite.svg"
+                    OnClick="FavouriteImageButton_Click"
+                    PostBackUrl="~/Favourite.aspx" ToolTip="Favourite"/>
+                <asp:ImageButton 
+                    class="small-icon cart"
+                    ID="ibtnCart" 
+                    runat="server" 
+                    ImageUrl="~/ImagesAndIcons/Icons/cart.svg"
+                    OnClick="CartImageButton_Click"
+                    PostBackUrl="~/Cart.aspx" ToolTip="Cart"/>
+                <asp:ImageButton 
+                    class="small-icon history"
+                    ID="ibtnHistory" 
+                    runat="server" 
+                    ImageUrl="~/ImagesAndIcons/Icons/history.svg"
+                    OnClick="ibtnHistory_Click"
+                    PostBackUrl="~/PurchaseHistory.aspx" ToolTip="History"/>
+                 <asp:ImageButton 
+                    class="small-icon logout"
+                    ID="ibtnLogout" 
+                    runat="server" 
+                    ImageUrl="~/ImagesAndIcons/Icons/logout.svg"
+                    OnClick="ibtnLogout_Click" ToolTip="Logout"/>
+             </div>
+
+            <div class="header2">
+                <table style="border-bottom-style: solid; border-bottom-color: inherit; border-bottom-width: 1px;" class="auto-style5">
+                    <tr class="topnav">
+                        <td class="auto-style1"></td>
+                        <td class="topnav">
+                            <a class="logo" href="Homepage.aspx">The<br/>&nbsp;Artling</a>
+                        </td>
+                        <td class="auto-style2"></td>
+                        <td class="topnav">
+                            <a class="simplenav" runat="server" href="PaintingPage.aspx">Painting</a>
+                        </td>
+                        <td class="auto-style3"></td>
+                        <td class="topnav">
+                            <a class="simplenav" href="PhotographyPage.aspx">Photography</a>
+                        </td>
+                        <td class="auto-style3"></td>
+                        <td class="topnav">
+                            <a class="simplenav" href="DrawingPage.aspx">Drawing</a>
+                        </td>
+                        <td class="auto-style3"></td>
+                        <td class="topnav">
+                            <a class="simplenav" href="MyArt.aspx" id="gallery" runat="server">Gallery</a>
+                        </td>
+                        
+                        <td class="auto-style2"></td>
+                        <td style="align-content: center" class="topnav">
+                            <asp:TextBox ID="txtboxSearch" Width="394px" runat="server" placeholder="What are you looking for ?"></asp:TextBox>
+                        </td>
+                        <td class="topnav">
+                            <asp:ImageButton ImageUrl="~/ImagesAndIcons/Icons/search_icon.svg" ID="ibtnSearch" runat="server" CssClass="txtboxbg" />
+                        </td>
+                        <td class="auto-style4">
+                            &nbsp;</td>
+                    </tr>
+                </table>
+            </div>
+        </header>
+
+        <br />
+        <div class="header3">
+            <div style="margin-top:10px; margin-left:50px;">
+                <asp:SiteMapPath ID="SiteMapPath1" runat="server" Font-Names="Verdana" Font-Size="0.8em" PathSeparator=" / ">
+                    <CurrentNodeStyle ForeColor="#333333" />
+                    <NodeStyle Font-Bold="True" ForeColor="#666666" />
+                    <PathSeparatorStyle Font-Bold="True" ForeColor="#1C5E55" />
+                    <RootNodeStyle Font-Bold="True" ForeColor="#1C5E55" />
+                </asp:SiteMapPath>
+            </div>
+        </div>
+        <br />
+        <div class="header4">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" BackColor="#F7F6F3" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#7C6F57" StaticSubMenuIndent="10px">
+                    <DynamicHoverStyle BackColor="#7C6F57" ForeColor="White" />
+                    <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                    <DynamicMenuStyle BackColor="#F7F6F3" />
+                    <DynamicSelectedStyle BackColor="#5D7B9D" />
+                    <StaticHoverStyle BackColor="#7C6F57" ForeColor="White" />
+                    <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                    <StaticSelectedStyle BackColor="#5D7B9D" />
+                </asp:Menu>
+                <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+            </asp:ContentPlaceHolder>
+            
+
+        <br />
+        
+        <footer class="footer-layout">
+            <table style="width:100%">
+                <tr onclick="scrollToTop(); return false;" class="scrolltop" style="text-align:center">
+                    <%-- back to top click--%>
+
+                    <td class="auto-style9 a.scrolltop" colspan="8">
+                        <div>
+                            <a class="scrolltop" id="backtoTop" href="#" >
+                                <asp:Image ID="Image1" runat="server" Height="20px" ImageUrl="~/ImagesAndIcons/Icons/scrollUp.svg" Width="21px" />
+                                <br />
+                                Back to Top</a>
+                        </div>
+                        <script>  
+                            function scrollToTop() {
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }
+                        </script>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td style="width: 140px;"></td>
+                    <td class="box">
+                        <div style="height: 20px;"></div>
+                        <div class="title">
+                            The Artling
+                        </div>
+                        <div style="height: 20px;"></div>
+                        <div>
+                            <!--------"About Us reference"--------->
+                            <a class="footernav" href="AboutUs.aspx">About Us</a>
+                        </div>
+                        <div style="height: 20px;"></div>
+                        <div>
+                            <!--------"The Team reference"--------->
+                            <a class="footernav" href="TheTeam.aspx">The Team</a>
+                        </div>
+                        <div style="height: 20px;"></div>
+                        <div>
+                            <!--------"Contact Us reference"--------->
+                            <a class="footernav" href="ContactUs.aspx">Contact Us</a>
+                        </div>
+                    </td>
+                    <td style="width: 40px;"></td>
+                    <td class="box">
+                        <div style="height: 20px;"></div>
+                        <div class="title">
+                            Customer Care
+                        </div>
+                        
+                        <div style="height: 20px;"></div>
+                        <div>
+                            <!--------"Return policy reference"--------->
+                            <a class="footernav" href="ReturnPolicyPage.aspx">Return Policy</a>
+                        </div>
+                        <div style="height: 20px;"></div>
+                        <div>
+                            <!--------"Terms of use reference"--------->
+                            <a class="footernav" href="TermsOfUsePage.aspx">Terms of Use</a>
+                        </div>
+                        <div style="height: 20px;"></div>
+                        <div>
+                            <!--------"Privacy policy reference"--------->
+                            <a class="footernav" href="PrivacyPolicyPage.aspx">Privacy Policy</a>
+                        </div>
+                        <div style="height: 20px;"></div>
+                    </td>
+                    <td style="width: 40px;"></td>
+                    <td class="box">
+                        <div style="height: 20px;"></div>
+                        <div class="title">
+                            Sell
+                        </div>
+                        <div style="height: 20px;"></div>
+                        <div>
+                            <!--------"Submit your works reference"--------->
+                            <a class="footernav" id="submitArtPage" href="SubmitArt.aspx">Submit your Works</a>
+                        </div>
+                        <div style="height: 20px;"></div>
+                        <div>
+                            <!--------"Seller guide reference"--------->
+                            <a class="footernav" href="SellerGuide.aspx">Seller Guide</a>
+                        </div>
+                    </td>
+                    <td style="width: 40px;"></td>
+                    <td class="box">
+                        <div style="height: 20px;"></div>
+                        <div class="title">
+                            Start Collecting
+                        </div>
+                        <div style="height: 20px;"></div>
+                        <div>
+                            <a class="footernav" href="PaintingPage.aspx">Painting</a>
+                        </div>
+                        <div style="height: 20px;"></div>
+                        <div>
+                            <a class="footernav" href="PhotographyPage.aspx">Photograph</a>
+                        </div>
+                        <div style="height: 20px;"></div>
+                        <div>
+                            <!--------"Prints reference"--------->
+                            <a class="footernav" href="DrawingPage.aspx">Drawing</a>
+                        </div>
+                    </td>
+                    <td style="width: 140px;"></td>
+                </tr>
+            </table>
+            <table class="wrapper">
+                <tr>
+                    <td style="width: 513px; height: 100px;"></td>
+
+                    <td class="lowerbox">
+                        <div style="height: 20px;"></div>
+                        <div style="text-align: center">Contact With Us!</div>
+                        <div style="height: 10px;"></div>
+                        <table>
+                            <tr>
+                                <td style="width: 40px;"></td>
+                                <td>
+                                    <asp:ImageButton ImageUrl="~/ImagesAndIcons/Icons/facebook_icon.svg" ID="ibtnFacebook" runat="server" CssClass="small-icon"/>
+                                </td>
+                                <td style="width: 40px;"></td>
+                                <td>
+                                    <asp:ImageButton ImageUrl="~/ImagesAndIcons/Icons/instagram_icon.svg" ID="ibtnInstagram" runat="server" CssClass="small-icon"/>
+                                </td>
+                                <td style="width: 40px;"></td>
+                                <td>
+                                    <asp:ImageButton ImageUrl="~/ImagesAndIcons/Icons/twitter_icon.svg" ID="ibtnTwitter" runat="server" CssClass="small-icon"/>
+                                </td>
+                                <td style="width: 40px;"></td>
+                            </tr>
+                        </table>
+                    </td>
+
+                    <td style="width: 513px; height: 100px;"></td>
+                </tr>
+            </table>
+        </footer>
+        </div>
+    </form>
+    
+</body>
+</html>
